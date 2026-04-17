@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phooldhara – From Temple Flowers to Divine Fragrance</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --saffron:#D4621A;--saffron-light:#FEF3EB;--saffron-mid:#E8864A;
+  --gold:#C9960A;--gold-light:#FFFBEF;
+  --green:#3A6B47;--green-light:#EBF5EF;
+  --cream:#FFFDF7;--petal:#FDF0F5;
+  --text-dark:#1E1208;--text-mid:#4A2C10;--text-light:#7A5535;
+  --border:#E6D4B8;--white:#FFFFFF;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.7;overflow-x:hidden;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;background:rgba(255,253,247,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 3rem;display:flex;align-items:center;justify-content:space-between;height:68px;}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo-text{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:600;color:var(--saffron);letter-spacing:-0.3px;}
+.logo-text em{color:var(--green);font-style:normal;}
+.nav-links{display:flex;align-items:center;gap:2.2rem;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--text-mid);font-size:.9rem;font-weight:500;transition:color .2s;}
+.nav-links a:hover{color:var(--saffron);}
+.nav-cta{background:var(--saffron)!important;color:#fff!important;padding:9px 22px;border-radius:50px;transition:background .2s,transform .2s!important;}
+.nav-cta:hover{background:var(--text-mid)!important;transform:translateY(-1px);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--saffron);border-radius:2px;transition:all .3s;}
+
+/* HERO */
+#home{min-height:92vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:3rem;padding:5rem 3rem;background:linear-gradient(135deg,var(--saffron-light) 0%,var(--gold-light) 55%,var(--green-light) 100%);position:relative;overflow:hidden;}
+.hero-pattern{position:absolute;inset:0;pointer-events:none;opacity:0.04;background-image:radial-gradient(circle,var(--saffron) 1px,transparent 1px);background-size:32px 32px;}
+.hero-text{position:relative;z-index:1;}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--border);padding:6px 18px;border-radius:50px;font-size:.78rem;font-weight:600;color:var(--green);margin-bottom:1.5rem;letter-spacing:.5px;animation:fadeUp .6s ease both;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,5vw,4.2rem);font-weight:600;line-height:1.1;color:var(--text-dark);margin-bottom:.8rem;animation:fadeUp .6s .1s ease both;}
+.hero-title span{color:var(--saffron);}
+.hero-tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.25rem;color:var(--saffron);margin-bottom:1.2rem;animation:fadeUp .6s .2s ease both;}
+.hero-desc{color:var(--text-light);font-size:1rem;max-width:440px;margin-bottom:2.5rem;animation:fadeUp .6s .3s ease both;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp .6s .4s ease both;}
+.btn-primary{background:var(--saffron);color:#fff;padding:14px 32px;border-radius:50px;font-size:.95rem;font-weight:600;text-decoration:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:transform .2s,box-shadow .2s;display:inline-block;}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,98,26,.3);}
+.btn-secondary{background:transparent;color:var(--green);padding:14px 32px;border-radius:50px;font-size:.95rem;font-weight:600;text-decoration:none;border:2px solid var(--green);cursor:pointer;transition:all .2s;display:inline-block;}
+.btn-secondary:hover{background:var(--green);color:#fff;}
+.hero-stats{display:flex;gap:2rem;margin-top:3rem;flex-wrap:wrap;animation:fadeUp .6s .5s ease both;}
+.stat strong{display:block;font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--saffron);}
+.stat span{font-size:.8rem;color:var(--text-light);}
+.hero-visual{display:flex;align-items:center;justify-content:center;position:relative;z-index:1;animation:fadeUp .7s .2s ease both;}
+.hero-svg-wrap{width:100%;max-width:460px;filter:drop-shadow(0 20px 40px rgba(212,98,26,.15));}
+
+/* SECTIONS */
+section{padding:6rem 3rem;}
+.section-inner{max-width:1100px;margin:0 auto;}
+.section-label{font-size:.73rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--saffron);margin-bottom:.5rem;}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);color:var(--text-dark);margin-bottom:.8rem;font-weight:600;}
+.section-sub{color:var(--text-light);max-width:520px;margin-bottom:3rem;font-size:.97rem;}
+
+/* FEATURES */
+#features{background:var(--white);}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:3rem;}
+.feature-card{background:var(--cream);border:1px solid var(--border);border-radius:18px;padding:2rem 1.6rem;text-align:center;transition:transform .25s,box-shadow .25s;}
+.feature-card:hover{transform:translateY(-5px);box-shadow:0 14px 36px rgba(201,150,10,.12);}
+.feat-icon{width:60px;height:60px;margin:0 auto 1.2rem;display:block;}
+.feature-card h3{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:.4rem;}
+.feature-card p{font-size:.87rem;color:var(--text-light);}
+
+/* PRODUCTS */
+#products{background:var(--saffron-light);}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;}
+.product-card{background:var(--white);border:1px solid var(--border);border-radius:22px;overflow:hidden;transition:transform .28s,box-shadow .28s;}
+.product-card:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(212,98,26,.16);}
+.product-img-wrap{height:200px;display:flex;align-items:center;justify-content:center;position:relative;padding:1rem;}
+.product-badges{position:absolute;top:12px;left:12px;display:flex;flex-direction:column;gap:5px;}
+.badge{font-size:.66rem;font-weight:700;padding:4px 11px;border-radius:50px;letter-spacing:.5px;}
+.badge-eco{background:var(--green-light);color:#1e5c30;border:1px solid #b8ddc4;}
+.badge-temple{background:var(--gold-light);color:#7a5500;border:1px solid #e0cc80;}
+.product-body{padding:1.4rem 1.6rem 1.8rem;}
+.product-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--text-dark);margin-bottom:.3rem;}
+.product-desc{font-size:.85rem;color:var(--text-light);margin-bottom:1rem;}
+.product-price{font-size:1.45rem;font-weight:600;color:var(--saffron);margin-bottom:1rem;}
+.product-price small{font-size:.78rem;color:var(--text-light);font-weight:400;}
+.fragrance-select{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--text-dark);background:var(--cream);margin-bottom:1rem;cursor:pointer;outline:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%237A5535' d='M5 7L0 2h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;-webkit-appearance:none;appearance:none;transition:border-color .2s;}
+.fragrance-select:focus{border-color:var(--saffron);}
+.order-btn{width:100%;background:var(--saffron);color:#fff;border:none;border-radius:50px;padding:12px;font-size:.93rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s,transform .2s;}
+.order-btn:hover{background:var(--text-mid);transform:scale(1.02);}
+
+/* ABOUT */
+#about{background:var(--white);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.about-visual-wrap{background:linear-gradient(135deg,var(--saffron-light),var(--gold-light));border-radius:28px;padding:3rem 2rem;border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;gap:1.5rem;}
+.about-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:var(--text-mid);text-align:center;line-height:1.6;}
+.steps{display:flex;flex-direction:column;gap:1rem;margin-top:1.5rem;}
+.step{display:flex;align-items:flex-start;gap:1rem;padding:1rem 1.2rem;background:var(--cream);border-radius:14px;border-left:3px solid var(--saffron);}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--saffron);color:#fff;font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.step-text strong{display:block;font-size:.9rem;color:var(--text-dark);margin-bottom:2px;}
+.step-text span{font-size:.82rem;color:var(--text-light);}
+
+/* TESTIMONIALS */
+#testimonials{background:var(--petal);}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:3rem;}
+.testi-card{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:1.8rem;transition:transform .2s;}
+.testi-card:hover{transform:translateY(-3px);}
+.stars{color:#E8A020;font-size:1rem;margin-bottom:.8rem;}
+.testi-text{font-size:.9rem;color:var(--text-mid);font-style:italic;margin-bottom:1rem;}
+.testi-author{font-size:.82rem;font-weight:600;color:var(--text-dark);}
+.testi-loc{font-size:.78rem;color:var(--text-light);}
+
+/* CONTACT */
+#contact{background:var(--green-light);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.contact-info h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--text-dark);margin-bottom:.5rem;}
+.contact-info p{color:var(--text-light);font-size:.95rem;margin-bottom:1.5rem;}
+.contact-detail{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--white);border-radius:12px;border:1px solid var(--border);margin-bottom:.8rem;font-size:.88rem;color:var(--text-mid);}
+.whatsapp-btn{display:flex;align-items:center;justify-content:center;gap:10px;background:#25D366;color:#fff;padding:14px 24px;border-radius:50px;font-size:.95rem;font-weight:600;text-decoration:none;margin-top:1.2rem;width:100%;transition:transform .2s,box-shadow .2s;}
+.whatsapp-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.3);}
+.contact-form{background:var(--white);border:1px solid var(--border);border-radius:22px;padding:2.2rem;}
+.contact-form h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--text-dark);margin-bottom:1.5rem;}
+.form-group{margin-bottom:1.1rem;}
+.form-group label{display:block;font-size:.82rem;font-weight:600;color:var(--text-mid);margin-bottom:5px;}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--text-dark);background:var(--cream);transition:border-color .2s;outline:none;}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--saffron);}
+.form-group textarea{resize:vertical;min-height:90px;}
+.submit-btn{width:100%;background:var(--saffron);color:#fff;border:none;border-radius:50px;padding:13px;font-size:.95rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s;}
+.submit-btn:hover{background:var(--text-mid);}
+.success-msg{display:none;background:var(--green-light);color:var(--green);border:1px solid #b8ddc4;border-radius:10px;padding:12px;text-align:center;font-weight:600;margin-top:1rem;font-size:.88rem;}
+
+/* FOOTER */
+footer{background:var(--text-dark);color:rgba(255,255,255,.65);padding:4rem 3rem 2rem;}
+.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;}
+.footer-logo-text{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:#E8864A;}
+.footer-logo-text em{color:#6dbf8a;font-style:normal;}
+.footer-tagline{font-size:.83rem;margin-top:.6rem;line-height:1.7;max-width:260px;}
+.social-links{display:flex;gap:10px;margin-top:1.2rem;}
+.social-link{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;transition:background .2s;text-decoration:none;font-size:.85rem;}
+.social-link:hover{background:var(--saffron);}
+.footer-col h4{color:#fff;font-size:.9rem;margin-bottom:1rem;font-weight:600;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:.5rem;}
+.footer-col ul li a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.85rem;transition:color .2s;}
+.footer-col ul li a:hover{color:#E8864A;}
+.footer-bottom{max-width:1100px;margin:2rem auto 0;border-top:1px solid rgba(255,255,255,.1);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;font-size:.78rem;flex-wrap:wrap;gap:.5rem;}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* MOBILE */
+@media(max-width:900px){
+  nav{padding:0 1.5rem;}
+  .nav-links{display:none;flex-direction:column;gap:0;position:absolute;top:68px;left:0;right:0;background:var(--cream);border-bottom:1px solid var(--border);padding:.5rem 0;z-index:100;}
+  .nav-links.open{display:flex;}
+  .nav-links li a{display:block;padding:12px 1.5rem;}
+  .nav-cta{margin:8px 1.5rem;text-align:center;display:block;}
+  .hamburger{display:flex;}
+  #home{grid-template-columns:1fr;padding:4rem 1.5rem;min-height:auto;gap:2rem;}
+  .hero-visual{order:-1;}
+  .hero-svg-wrap{max-width:320px;}
+  section{padding:4rem 1.5rem;}
+  .about-grid{grid-template-columns:1fr;}
+  .contact-grid{grid-template-columns:1fr;}
+  .footer-inner{grid-template-columns:1fr;gap:2rem;}
+  .footer-bottom{flex-direction:column;text-align:center;}
+  nav{position:relative;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a class="nav-logo" href="#home">
+    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="18" cy="18" r="17" fill="#FEF3EB" stroke="#E6D4B8" stroke-width="1"/>
+      <ellipse cx="18" cy="9" rx="3.5" ry="5.5" fill="#D4621A" opacity=".9"/>
+      <ellipse cx="18" cy="9" rx="3.5" ry="5.5" fill="#D4621A" opacity=".9" transform="rotate(45 18 18)"/>
+      <ellipse cx="18" cy="9" rx="3.5" ry="5.5" fill="#E8864A" opacity=".85" transform="rotate(90 18 18)"/>
+      <ellipse cx="18" cy="9" rx="3.5" ry="5.5" fill="#D4621A" opacity=".9" transform="rotate(135 18 18)"/>
+      <ellipse cx="18" cy="9" rx="3.5" ry="5.5" fill="#E8864A" opacity=".85" transform="rotate(180 18 18)"/>
+      <ellipse cx="18" cy="9" rx="3.5" ry="5.5" fill="#D4621A" opacity=".9" transform="rotate(225 18 18)"/>
+      <ellipse cx="18" cy="9" rx="3.5" ry="5.5" fill="#E8864A" opacity=".85" transform="rotate(270 18 18)"/>
+      <ellipse cx="18" cy="9" rx="3.5" ry="5.5" fill="#D4621A" opacity=".9" transform="rotate(315 18 18)"/>
+      <circle cx="18" cy="18" r="5" fill="#C9960A"/>
+      <circle cx="18" cy="18" r="3" fill="#E8A020"/>
+      <ellipse cx="27" cy="27" rx="3" ry="5" fill="#3A6B47" opacity=".8" transform="rotate(-40 27 27)"/>
+    </svg>
+    <span class="logo-text">Phool<em>dhara</em></span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#about">About Us</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact" class="nav-cta">Order Now</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-pattern" aria-hidden="true"></div>
+  <div class="hero-text">
+    <div class="hero-pill">🌿 Eco-Friendly &nbsp;·&nbsp; 100% Natural &nbsp;·&nbsp; Handmade</div>
+    <h1 class="hero-title">Sacred Flowers,<br><span>Divine Fragrance.</span></h1>
+    <p class="hero-tagline">"From Temple Flowers to Divine Fragrance"</p>
+    <p class="hero-desc">We collect waste flowers from temples — phool jo bhagwan ko chadhe the — and lovingly transform them into pure, handcrafted agarbatti and dhoopbatti.</p>
+    <div class="hero-btns">
+      <a href="#products" class="btn-primary">Shop Our Products</a>
+      <a href="#about" class="btn-secondary">Our Story</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><strong>500+</strong><span>Temples Served</span></div>
+      <div class="stat"><strong>10K+</strong><span>Flowers Recycled</span></div>
+      <div class="stat"><strong>4</strong><span>Fragrances</span></div>
+      <div class="stat"><strong>100%</strong><span>Chemical-Free</span></div>
+    </div>
+  </div>
+  </div>
+<div class="hero-visual" style="width:100%; height:600px; overflow:hidden; border-radius:24px;">
+  <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/incense-stick/e/h/a/agarbatti-hand-rolled-incense-sticks-natural-floral-fragrance-original-imahhmy3pqb9kszc.jpeg?q=90" 
+       alt="Phooldhara Products"
+       style="width:100%; height:100%; object-fit:cover; object-position:center; display:block;">
+</div>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="section-inner">
+    <p class="section-label">Our Products</p>
+    <h2 class="section-title">The Divine Fragrance Collection</h2>
+    <p class="section-sub">Each product is crafted from temple flowers, sun-dried and blended with natural herbs. Apni pasand ki fragrance choose karein below.</p>
+    <div class="products-grid">
+
+      <!-- AGARBATTI -->
+      <div class="product-card reveal">
+        <div class="product-img-wrap" style="background:linear-gradient(135deg,#FEF3EB,#FFF3CC);">
+          <svg width="155" height="168" viewBox="0 0 155 168" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Premium Agarbatti incense sticks">
+            <ellipse cx="78" cy="154" rx="44" ry="11" fill="#C9960A" opacity=".45"/>
+            <ellipse cx="78" cy="149" rx="44" ry="11" fill="#E8A020" opacity=".65"/>
+            <rect x="64" y="144" width="28" height="8" rx="4" fill="#C9960A"/>
+            <!-- Stick 1 -->
+            <line x1="62" y1="146" x2="46" y2="18" stroke="#8B5A1A" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="62" y1="146" x2="52" y2="86" stroke="#D4621A" stroke-width="3.5" stroke-linecap="round"/>
+            <!-- Stick 2 -->
+            <line x1="76" y1="144" x2="76" y2="14" stroke="#8B5A1A" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="76" y1="144" x2="76" y2="76" stroke="#E8864A" stroke-width="3.5" stroke-linecap="round"/>
+            <!-- Stick 3 -->
+            <line x1="90" y1="146" x2="107" y2="16" stroke="#8B5A1A" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="90" y1="146" x2="100" y2="84" stroke="#D4621A" stroke-width="3.5" stroke-linecap="round"/>
+            <!-- Tips -->
+            <circle cx="46" cy="18" r="5" fill="#FFAA00" opacity=".92"/><circle cx="46" cy="18" r="3" fill="#FFEE44"/>
+            <circle cx="76" cy="14" r="5" fill="#FFAA00" opacity=".92"/><circle cx="76" cy="14" r="3" fill="#FFEE44"/>
+            <circle cx="107" cy="16" r="5" fill="#FFAA00" opacity=".92"/><circle cx="107" cy="16" r="3" fill="#FFEE44"/>
+            <!-- Smoke -->
+            <path d="M46 18 Q39 2 46 -10" stroke="#B0906A" stroke-width="1.5" fill="none" opacity=".4" stroke-linecap="round"/>
+            <path d="M76 14 Q69 -2 76 -14" stroke="#B0906A" stroke-width="1.5" fill="none" opacity=".35" stroke-linecap="round"/>
+            <path d="M107 16 Q114 0 107 -12" stroke="#B0906A" stroke-width="1.5" fill="none" opacity=".4" stroke-linecap="round"/>
+            <!-- Petals -->
+            <ellipse cx="34" cy="146" rx="9" ry="4" fill="#D4621A" opacity=".42" transform="rotate(-14 34 146)"/>
+            <ellipse cx="124" cy="143" rx="8" ry="4" fill="#E8A020" opacity=".38" transform="rotate(12 124 143)"/>
+            <!-- Flower decoration -->
+            <ellipse cx="76" cy="108" rx="3.5" ry="6" fill="#D4621A" opacity=".5"/>
+            <ellipse cx="76" cy="108" rx="3.5" ry="6" fill="#E8864A" opacity=".45" transform="rotate(72 76 116)"/>
+            <ellipse cx="76" cy="108" rx="3.5" ry="6" fill="#D4621A" opacity=".5" transform="rotate(144 76 116)"/>
+            <ellipse cx="76" cy="108" rx="3.5" ry="6" fill="#E8864A" opacity=".45" transform="rotate(216 76 116)"/>
+            <ellipse cx="76" cy="108" rx="3.5" ry="6" fill="#D4621A" opacity=".5" transform="rotate(288 76 116)"/>
+            <circle cx="76" cy="116" r="4" fill="#C9960A" opacity=".6"/>
+          </svg>
+          <div class="product-badges">
+            <span class="badge badge-eco">🌿 Eco-Friendly</span>
+            <span class="badge badge-temple">🙏 Temple Flower</span>
+          </div>
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">Premium Agarbatti</h3>
+          <p class="product-desc">Hand-rolled incense sticks from sun-dried temple flowers. 45 min burn time per stick. Pack of 20.</p>
+          <div class="product-price">₹49 <small>/ pack of 20 sticks</small></div>
+          <select class="fragrance-select" aria-label="Select fragrance">
+            <option value="">🌺 Select Fragrance...</option>
+            <option value="rose">🌹 Rose – Gulab ki mehak</option>
+            <option value="chandan">🪵 Chandan – Pure Sandalwood</option>
+            <option value="mogra">🌼 Mogra – Jasmine Bloom</option>
+            <option value="loban">🌿 Loban – Sacred Frankincense</option>
+          </select>
+          <button class="order-btn" onclick="orderNow('Premium Agarbatti',this)">📱 Order via WhatsApp</button>
+        </div>
+      </div>
+
+      <!-- DHOOPBATTI -->
+      <div class="product-card reveal">
+        <div class="product-img-wrap" style="background:linear-gradient(135deg,#EBF5EF,#D4EDDA);">
+          <svg width="155" height="168" viewBox="0 0 155 168" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Dhoopbatti incense cones">
+            <ellipse cx="78" cy="148" rx="56" ry="13" fill="#C9960A" opacity=".32"/>
+            <ellipse cx="78" cy="143" rx="56" ry="13" fill="#E8A020" opacity=".48"/>
+            <!-- Center cone -->
+            <path d="M78 52 L56 140 L100 140 Z" fill="#6B3F10" opacity=".9"/>
+            <path d="M78 52 L62 140 L78 140 Z" fill="#8B5A1A" opacity=".65"/>
+            <path d="M78 52 L66 96 L90 96 Z" fill="#D4621A" opacity=".8"/>
+            <!-- Left cone -->
+            <path d="M44 72 L28 140 L60 140 Z" fill="#5A3410" opacity=".85"/>
+            <path d="M44 72 L32 140 L44 140 Z" fill="#7A4A18" opacity=".6"/>
+            <path d="M44 72 L35 108 L53 108 Z" fill="#D4621A" opacity=".72"/>
+            <!-- Right cone -->
+            <path d="M112 72 L96 140 L128 140 Z" fill="#5A3410" opacity=".85"/>
+            <path d="M112 72 L100 140 L112 140 Z" fill="#7A4A18" opacity=".6"/>
+            <path d="M112 72 L103 108 L121 108 Z" fill="#D4621A" opacity=".72"/>
+            <!-- Tips glow -->
+            <circle cx="78" cy="52" r="5.5" fill="#FFAA00" opacity=".9"/><circle cx="78" cy="52" r="3" fill="#FFE040"/>
+            <circle cx="44" cy="72" r="5" fill="#FFAA00" opacity=".88"/><circle cx="44" cy="72" r="2.8" fill="#FFE040"/>
+            <circle cx="112" cy="72" r="5" fill="#FFAA00" opacity=".88"/><circle cx="112" cy="72" r="2.8" fill="#FFE040"/>
+            <!-- Smoke -->
+            <path d="M78 52 Q70 32 78 12 Q86 -8 78 -18" stroke="#9A8878" stroke-width="2" fill="none" opacity=".38" stroke-linecap="round"/>
+            <path d="M44 72 Q36 54 44 38 Q52 22 44 12" stroke="#9A8878" stroke-width="1.5" fill="none" opacity=".32" stroke-linecap="round"/>
+            <path d="M112 72 Q120 54 112 38 Q104 22 112 12" stroke="#9A8878" stroke-width="1.5" fill="none" opacity=".32" stroke-linecap="round"/>
+            <!-- Petals on plate -->
+            <ellipse cx="22" cy="142" rx="10" ry="4.5" fill="#3A6B47" opacity=".38" transform="rotate(-18 22 142)"/>
+            <ellipse cx="135" cy="140" rx="9" ry="4" fill="#3A6B47" opacity=".33" transform="rotate(16 135 140)"/>
+            <ellipse cx="78" cy="153" rx="12" ry="4" fill="#E8A020" opacity=".28" transform="rotate(4 78 153)"/>
+          </svg>
+          <div class="product-badges">
+            <span class="badge badge-eco">🌿 Eco-Friendly</span>
+            <span class="badge badge-temple">🙏 Temple Flower</span>
+          </div>
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">Dhoopbatti Cones</h3>
+          <p class="product-desc">Compact dhoop cones that fill your entire room with divine fragrance. Long-lasting, low-smoke formula.</p>
+          <div class="product-price">₹69 <small>/ pack of 12 cones</small></div>
+          <select class="fragrance-select" aria-label="Select fragrance">
+            <option value="">🌺 Select Fragrance...</option>
+            <option value="rose">🌹 Rose – Gulab ki mehak</option>
+            <option value="chandan">🪵 Chandan – Pure Sandalwood</option>
+            <option value="mogra">🌼 Mogra – Jasmine Bloom</option>
+            <option value="loban">🌿 Loban – Sacred Frankincense</option>
+          </select>
+          <button class="order-btn" onclick="orderNow('Dhoopbatti Cones',this)">📱 Order via WhatsApp</button>
+        </div>
+      </div>
+
+      <!-- COMBO -->
+      <div class="product-card reveal">
+        <div class="product-img-wrap" style="background:linear-gradient(135deg,#FFFBEF,#FEF3EB);">
+          <svg width="155" height="168" viewBox="0 0 155 168" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Pooja combo gift box">
+            <!-- Box -->
+            <rect x="28" y="78" width="100" height="74" rx="8" fill="#FEF3EB" stroke="#E6D4B8" stroke-width="1.5"/>
+            <!-- Box lid/top -->
+            <rect x="28" y="78" width="100" height="24" rx="8" fill="#D4621A" opacity=".82"/>
+            <rect x="28" y="93" width="100" height="9" fill="#D4621A" opacity=".82"/>
+            <text x="78" y="95" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="11" fill="white" font-weight="600">POOJA COMBO</text>
+            <!-- Ribbon cross -->
+            <line x1="78" y1="78" x2="78" y2="152" stroke="#C9960A" stroke-width="1.5" stroke-dasharray="3 2" opacity=".7"/>
+            <line x1="28" y1="115" x2="128" y2="115" stroke="#C9960A" stroke-width="1.5" stroke-dasharray="3 2" opacity=".7"/>
+            <!-- Mini sticks inside -->
+            <line x1="52" y1="150" x2="47" y2="108" stroke="#8B5A1A" stroke-width="2" stroke-linecap="round"/>
+            <line x1="52" y1="150" x2="49" y2="128" stroke="#D4621A" stroke-width="2" stroke-linecap="round"/>
+            <line x1="60" y1="151" x2="60" y2="107" stroke="#8B5A1A" stroke-width="2" stroke-linecap="round"/>
+            <line x1="60" y1="151" x2="60" y2="126" stroke="#E8864A" stroke-width="2" stroke-linecap="round"/>
+            <line x1="68" y1="150" x2="73" y2="108" stroke="#8B5A1A" stroke-width="2" stroke-linecap="round"/>
+            <line x1="68" y1="150" x2="71" y2="128" stroke="#D4621A" stroke-width="2" stroke-linecap="round"/>
+            <!-- Mini cone inside -->
+            <path d="M104 114 L94 150 L114 150 Z" fill="#6B3F10" opacity=".82"/>
+            <path d="M104 114 L98 134 L110 134 Z" fill="#D4621A" opacity=".78"/>
+            <circle cx="104" cy="114" r="3.5" fill="#FFAA00" opacity=".9"/>
+            <!-- Stars deco -->
+            <text x="48" y="125" font-size="9" fill="#C9960A" opacity=".65">✦</text>
+            <text x="112" y="122" font-size="9" fill="#C9960A" opacity=".65">✦</text>
+            <!-- Flower on top of box -->
+            <circle cx="78" cy="66" r="13" fill="#FEF3EB"/>
+            <ellipse cx="78" cy="53" rx="4" ry="7" fill="#D4621A" opacity=".9"/>
+            <ellipse cx="78" cy="53" rx="4" ry="7" fill="#E8864A" opacity=".85" transform="rotate(60 78 66)"/>
+            <ellipse cx="78" cy="53" rx="4" ry="7" fill="#D4621A" opacity=".9" transform="rotate(120 78 66)"/>
+            <ellipse cx="78" cy="53" rx="4" ry="7" fill="#E8864A" opacity=".85" transform="rotate(180 78 66)"/>
+            <ellipse cx="78" cy="53" rx="4" ry="7" fill="#D4621A" opacity=".9" transform="rotate(240 78 66)"/>
+            <ellipse cx="78" cy="53" rx="4" ry="7" fill="#E8864A" opacity=".85" transform="rotate(300 78 66)"/>
+            <circle cx="78" cy="66" r="6" fill="#C9960A"/>
+            <circle cx="78" cy="66" r="3.2" fill="#E8A020"/>
+            <!-- Best Value pill -->
+            <rect x="93" y="28" width="48" height="19" rx="9.5" fill="#3A6B47"/>
+            <text x="117" y="41" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="white" font-weight="600">BEST VALUE</text>
+          </svg>
+          <div class="product-badges">
+            <span class="badge badge-eco">🌿 Eco-Friendly</span>
+            <span class="badge badge-temple">🙏 Temple Flower</span>
+          </div>
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">Pooja Combo Pack</h3>
+          <p class="product-desc">The complete pooja experience — 20 agarbatti sticks + 12 dhoopbatti cones in a beautiful gift box.</p>
+          <div class="product-price">₹99 <small>/ combo (save ₹19)</small></div>
+          <select class="fragrance-select" aria-label="Select fragrance">
+            <option value="">🌺 Select Fragrance...</option>
+            <option value="rose">🌹 Rose – Gulab ki mehak</option>
+            <option value="chandan">🪵 Chandan – Pure Sandalwood</option>
+            <option value="mogra">🌼 Mogra – Jasmine Bloom</option>
+            <option value="loban">🌿 Loban – Sacred Frankincense</option>
+          </select>
+          <button class="order-btn" onclick="orderNow('Pooja Combo Pack',this)">📱 Order via WhatsApp</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-visual-wrap reveal">
+        <img src="https://www.shutterstock.com/image-photo/iskcon-vrindavan-known-sri-krishnabalaram-600w-2292297621.jpg" 
+     style="width:100%; max-width:300px; border-radius:18px; object-fit:cover;"
+     alt="Phooldhara Story">
+        <p class="about-quote">"Flowers offered to God should not die in a landfill — they should return as fragrance, as light, as devotion renewed."</p>
+      </div>
+      <div class="reveal">
+        <p class="section-label">Our Story</p>
+        <h2 class="section-title">From Waste to Wonder</h2>
+        <p style="color:var(--text-light);font-size:.97rem;margin-bottom:1rem;">Every day, millions of flowers are offered in temples across India — and every day, those same flowers end up in rivers, streets, and landfills. We asked: <strong style="color:var(--text-dark);">What if they didn't?</strong></p>
+        <p style="color:var(--text-light);font-size:.97rem;margin-bottom:1.8rem;">Phooldhara was born from this simple idea — collect the flowers, preserve their fragrance, and return them to the devotees. Mandir ke phool, ghar tak khushboo — as pure handmade agarbatti and dhoopbatti.</p>
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Collect from Temples</strong><span>We partner with local mandirs to collect fresh floral waste every morning.</span></div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Sun-Dry &amp; Purify</strong><span>Flowers are naturally dried in sunlight — zero chemicals, zero additives.</span></div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Hand-Craft with Love</strong><span>Our artisans hand-roll each stick with flower powder, herbs, and essential oils.</span></div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Delivered to Your Doorstep</strong><span>The divine fragrance returns home — ready for your next pooja.</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-inner">
+    <p class="section-label" style="text-align:center;">Customer Reviews</p>
+    <h2 class="section-title" style="text-align:center;">What Devotees Say</h2>
+    <p class="section-sub" style="margin:0 auto 3rem;text-align:center;">Real words from real customers across Rajasthan.</p>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"The Rose agarbatti is absolutely divine. Pooja ka maahol hi badal gaya. I've never used anything this pure before."</p>
+        <div class="testi-author">Sunita Sharma</div>
+        <div class="testi-loc">Pushkar, Rajasthan</div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Bahut achhi fragrance aur packaging bhi beautiful thi. The combo pack is great value — ordered twice already!"</p>
+        <div class="testi-author">Rakesh Gupta</div>
+        <div class="testi-loc">Jaipur, Rajasthan</div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="stars">★★★★☆</div>
+        <p class="testi-text">"I love the concept of recycling temple flowers. The Chandan dhoopbatti lasts long and the fragrance is so calming."</p>
+        <div class="testi-author">Priya Agarwal</div>
+        <div class="testi-loc">Ajmer, Rajasthan</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div style="text-align:center;margin-bottom:3rem;">
+      <p class="section-label">Get In Touch</p>
+      <h2 class="section-title">Order or Enquire</h2>
+      <p class="section-sub" style="margin:0 auto;">Bulk orders, personal purchases, ya koi bhi sawaal — hum yahan hain for you.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <h3>Contact Us Directly</h3>
+        <p>For wholesale, bulk, or personal orders — we are just a message away.</p>
+        <div class="contact-detail"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1C5.24 1 3 3.24 3 6c0 4.25 5 9 5 9s5-4.75 5-9c0-2.76-2.24-5-5-5zm0 6.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" fill="#D4621A"/></svg>Jaipur, Rajasthan, India</div>
+        <div class="contact-detail"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.5 2A1.5 1.5 0 002 3.5v1C2 10.299 5.701 14 11.5 14H12.5A1.5 1.5 0 0014 12.5v-1a1.5 1.5 0 00-1.11-1.45l-2-.5a1.5 1.5 0 00-1.65.72l-.35.58A7.003 7.003 0 014.7 6.61l.58-.35a1.5 1.5 0 00.72-1.65l-.5-2A1.5 1.5 0 004.5 2h-1z" fill="#D4621A"/></svg>+91 9928283428</div>
+        <div class="contact-detail"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4a1 1 0 011-1h10a1 1 0 011 1v8a1 1 0 01-1 1H3a1 1 0 01-1-1V4zm1 0v.217l5 3.334 5-3.334V4H3zm10 1.383L8 8.717 3 5.383V12h10V5.383z" fill="#D4621A"/></svg>ashokmorda20@gmail.cpm</div>
+        <div class="contact-detail"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#D4621A" stroke-width="1.5"/><path d="M8 4.5V8l2.5 2.5" stroke="#D4621A" stroke-width="1.5" stroke-linecap="round"/></svg>Monday – Saturday, 9 AM – 7 PM</div>
+        <a href="https://wa.me/916375507029text=Namaste!%20I%20would%20like%20to%20order%20from%20Phooldhara." class="whatsapp-btn" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2C5.58 2 2 5.58 2 10c0 1.5.41 2.9 1.12 4.12L2 18l4.02-1.08A8 8 0 1010 2zm4.35 11.35c-.18.5-1.06.97-1.46 1.02-.38.05-.86.07-1.39-.09a12.8 12.8 0 01-1.26-.47C8.1 13.1 6.9 11.5 6.8 11.37c-.1-.13-.83-1.1-.83-2.1 0-1 .52-1.49.71-1.7.19-.21.41-.26.55-.26.14 0 .27 0 .39.01.13.01.3-.05.47.36.18.42.6 1.46.65 1.57.06.11.1.23.02.37-.07.14-.11.23-.22.35-.11.12-.23.27-.33.36-.11.1-.23.21-.1.41.13.2.59.97 1.26 1.57.87.77 1.6 1.01 1.82 1.12.22.11.35.09.48-.05.13-.14.55-.64.7-.86.15-.22.29-.18.5-.11.21.07 1.35.64 1.58.75.23.11.39.17.44.26.06.1.06.57-.12 1.07z" fill="white"/></svg>
+          Order on WhatsApp
+        </a>
+      </div>
+      <div class="contact-form reveal">
+        <h3>Send a Message</h3>
+        <div class="form-group"><label>Your Name</label><input type="text" id="fname" placeholder="e.g. Rahul Sharma"/></div>
+        <div class="form-group"><label>Phone Number</label><input type="tel" id="fphone" placeholder="+91 XXXXX XXXXX"/></div>
+        <div class="form-group"><label>Product Interest</label>
+          <select id="fproduct">
+            <option value="">Select a product...</option>
+            <option>Premium Agarbatti</option>
+            <option>Dhoopbatti Cones</option>
+            <option>Pooja Combo Pack</option>
+            <option>Bulk / Wholesale Order</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Message</label><textarea id="fmsg" placeholder="Write your query or order details here..."></textarea></div>
+        <button class="submit-btn" onclick="submitForm()">🙏 Send Message</button>
+        <div class="success-msg" id="successMsg">✅ Message sent! We will contact you shortly.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <svg width="32" height="32" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="17" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.14)" stroke-width="1"/>
+          <ellipse cx="18" cy="9" rx="3.5" ry="5.5" fill="#E8864A" opacity=".9"/>
+          <ellipse cx="18" cy="9" rx="3.5" ry="5.5" fill="#E8864A" opacity=".9" transform="rotate(45 18 18)"/>
+          <ellipse cx="18" cy="9" rx="3.5" ry="5.5" fill="#D4621A" opacity=".85" transform="rotate(90 18 18)"/>
+          <ellipse cx="18" cy="9" rx="3.5" ry="5.5" fill="#E8864A" opacity=".9" transform="rotate(135 18 18)"/>
+          <ellipse cx="18" cy="9" rx="3.5" ry="5.5" fill="#D4621A" opacity=".85" transform="rotate(180 18 18)"/>
+          <ellipse cx="18" cy="9" rx="3.5" ry="5.5" fill="#E8864A" opacity=".9" transform="rotate(225 18 18)"/>
+          <ellipse cx="18" cy="9" rx="3.5" ry="5.5" fill="#D4621A" opacity=".85" transform="rotate(270 18 18)"/>
+          <ellipse cx="18" cy="9" rx="3.5" ry="5.5" fill="#E8864A" opacity=".9" transform="rotate(315 18 18)"/>
+          <circle cx="18" cy="18" r="5" fill="#C9960A"/>
+          <circle cx="18" cy="18" r="3" fill="#E8A020"/>
+          <ellipse cx="27" cy="27" rx="3" ry="5" fill="#6dbf8a" opacity=".8" transform="rotate(-40 27 27)"/>
+        </svg>
+        <div class="footer-logo-text">Phool<em>dhara</em></div>
+      </div>
+      <p class="footer-tagline">Turning sacred temple flowers into divine fragrance — one handcrafted stick at a time. Made with love in Rajasthan.</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/phooldhara_products/" class="social-link" aria-label="Instagram">📸</a>
+        <a href="#" class="social-link" aria-label="Facebook">👥</a>
+        <a href="https://www.youtube.com/@Mr.RandomVlogs" class="social-link" aria-label="YouTube">▶</a>
+        <a href="https://wa.me/916375507029" class="social-link" aria-label="WhatsApp">💬</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <ul>
+        <li><a href="#products">Premium Agarbatti</a></li>
+        <li><a href="#products">Dhoopbatti Cones</a></li>
+        <li><a href="#products">Pooja Combo Pack</a></li>
+        <li><a href="#contact">Bulk Orders</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Phooldhara. Made with 🌸 in Rajasthan, India.</span>
+    <span>Eco-Friendly · Handmade · 100% Natural · Chemical-Free</span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('hamburger').addEventListener('click',function(){
+  document.getElementById('navLinks').classList.toggle('open');
+});
+document.querySelectorAll('#navLinks a').forEach(function(a){
+  a.addEventListener('click',function(){document.getElementById('navLinks').classList.remove('open');});
+});
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e,i){
+    if(e.isIntersecting){setTimeout(function(){e.target.classList.add('visible');},i*90);obs.unobserve(e.target);}
+  });
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+
+function orderNow(productName,btn){
+  var sel=btn.previousElementSibling;
+  if(!sel.value){sel.style.borderColor='#D4621A';sel.focus();setTimeout(function(){sel.style.borderColor='';},2200);return;}
+  var fragLabel=sel.options[sel.selectedIndex].text;
+  var msg=encodeURIComponent('Namaste! I would like to order:\n\nProduct: '+productName+'\nFragrance: '+fragLabel+'\n\nPlease confirm availability and delivery. Dhanyavaad!');
+  window.open('https://wa.me/919876543210?text='+msg,'_blank');
+}
+function submitForm(){
+  var name=document.getElementById('fname').value.trim();
+  var phone=document.getElementById('fphone').value.trim();
+  if(!name||!phone){alert('Please fill in your name and phone number.');return;}
+  var msg=document.getElementById('successMsg');
+  msg.style.display='block';
+  setTimeout(function(){msg.style.display='none';},5000);
+  ['fname','fphone','fproduct','fmsg'].forEach(function(id){document.getElementById(id).value='';});
+}
+</script>
+</body>
+</html>
