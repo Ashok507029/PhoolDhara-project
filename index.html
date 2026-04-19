@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="PhoolDhara premium agarbatti and dhoopbatti products.">
 <title>PhoolDhara Agarbatti | Dhoop Batti Premium Incense Products</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -148,28 +149,56 @@ footer{background:var(--text-dark);color:rgba(255,255,255,.65);padding:4rem 3rem
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
 
+/* HERO IMAGE */
+.hero-img-wrap{
+  width:100%;
+  max-width: 650px; 
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 20px 50px rgba(212,98,26,.18);
+}
+.hero-img-wrap img{
+  width:100%;
+  height: 550px; 
+  object-fit:cover;
+  object-position:center;
+  display:block;
+  border-radius:24px;
+}
+
 /* MOBILE */
 @media(max-width:900px){
-  nav{padding:0 1.5rem;}
+  nav{padding:0 1.5rem;position:relative;}
   .nav-links{display:none;flex-direction:column;gap:0;position:absolute;top:68px;left:0;right:0;background:var(--cream);border-bottom:1px solid var(--border);padding:.5rem 0;z-index:100;}
   .nav-links.open{display:flex;}
   .nav-links li a{display:block;padding:12px 1.5rem;}
   .nav-cta{margin:8px 1.5rem;text-align:center;display:block;}
   .hamburger{display:flex;}
-  #home{grid-template-columns:1fr;padding:4rem 1.5rem;min-height:auto;gap:2rem;}
-  .hero-visual{order:-1;}
-  .hero-svg-wrap{max-width:320px;}
+  #home{grid-template-columns:1fr;padding:3rem 1.5rem;min-height:auto;gap:2rem;}
+  .hero-visual{order:-1;display:flex;justify-content:center;}
+  .hero-img-wrap{max-width:100%;border-radius:18px;height:280px;}
+  .hero-img-wrap img{height:280px;}
   section{padding:4rem 1.5rem;}
   .about-grid{grid-template-columns:1fr;}
   .contact-grid{grid-template-columns:1fr;}
   .footer-inner{grid-template-columns:1fr;gap:2rem;}
   .footer-bottom{flex-direction:column;text-align:center;}
-  nav{position:relative;}
+}
+
+@media(max-width:480px){
+  .hero-title{font-size:2rem;line-height:1.2;}
+  .hero-btns a{width:100%;text-align:center;}
+  .hero-stats{gap:1rem;}
+  .stat{width:45%;}
+  .hero-img-wrap{height: 350px;} 
+  .hero-img-wrap img{height: 350px;}
 }
 </style>
 </head>
 <body>
+
   <h1 style="display:none;">PhoolDhara premium fragrance products</h1>
+
 
 <!-- NAV -->
 <nav id="mainNav">
@@ -221,12 +250,12 @@ footer{background:var(--text-dark);color:rgba(255,255,255,.65);padding:4rem 3rem
       <div class="stat"><strong>100%</strong><span>Chemical-Free</span></div>
     </div>
   </div>
+  <div class="hero-visual">
+    <div class="hero-img-wrap">
+      <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/incense-stick/e/h/a/agarbatti-hand-rolled-incense-sticks-natural-floral-fragrance-original-imahhmy3pqb9kszc.jpeg?q=90" 
+           alt="Phooldhara Agarbatti Products">
+    </div>
   </div>
-<div class="hero-visual" style="width:100%; height:600px; overflow:hidden; border-radius:24px;">
-  <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/incense-stick/e/h/a/agarbatti-hand-rolled-incense-sticks-natural-floral-fragrance-original-imahhmy3pqb9kszc.jpeg?q=90" 
-       alt="Phooldhara Products"
-       style="width:100%; height:100%; object-fit:cover; object-position:center; display:block;">
-</div>
 
 <!-- PRODUCTS -->
 <section id="products">
@@ -476,7 +505,7 @@ footer{background:var(--text-dark);color:rgba(255,255,255,.65);padding:4rem 3rem
         <p>For wholesale, bulk, or personal orders — we are just a message away.</p>
         <div class="contact-detail"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1C5.24 1 3 3.24 3 6c0 4.25 5 9 5 9s5-4.75 5-9c0-2.76-2.24-5-5-5zm0 6.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" fill="#D4621A"/></svg>Jaipur, Rajasthan, India</div>
         <div class="contact-detail"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.5 2A1.5 1.5 0 002 3.5v1C2 10.299 5.701 14 11.5 14H12.5A1.5 1.5 0 0014 12.5v-1a1.5 1.5 0 00-1.11-1.45l-2-.5a1.5 1.5 0 00-1.65.72l-.35.58A7.003 7.003 0 014.7 6.61l.58-.35a1.5 1.5 0 00.72-1.65l-.5-2A1.5 1.5 0 004.5 2h-1z" fill="#D4621A"/></svg>+91 9928283428</div>
-        <div class="contact-detail"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4a1 1 0 011-1h10a1 1 0 011 1v8a1 1 0 01-1 1H3a1 1 0 01-1-1V4zm1 0v.217l5 3.334 5-3.334V4H3zm10 1.383L8 8.717 3 5.383V12h10V5.383z" fill="#D4621A"/></svg>ashokmorda20@gmail.cpm</div>
+        <div class="contact-detail"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4a1 1 0 011-1h10a1 1 0 011 1v8a1 1 0 01-1 1H3a1 1 0 01-1-1V4zm1 0v.217l5 3.334 5-3.334V4H3zm10 1.383L8 8.717 3 5.383V12h10V5.383z" fill="#D4621A"/></svg>ashokmorda20@gmail.com</div>
         <div class="contact-detail"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#D4621A" stroke-width="1.5"/><path d="M8 4.5V8l2.5 2.5" stroke="#D4621A" stroke-width="1.5" stroke-linecap="round"/></svg>Monday – Saturday, 9 AM – 7 PM</div>
         <a href="https://wa.me/916375507029text=Namaste!%20I%20would%20like%20to%20order%20from%20Phooldhara." class="whatsapp-btn" target="_blank" rel="noopener">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2C5.58 2 2 5.58 2 10c0 1.5.41 2.9 1.12 4.12L2 18l4.02-1.08A8 8 0 1010 2zm4.35 11.35c-.18.5-1.06.97-1.46 1.02-.38.05-.86.07-1.39-.09a12.8 12.8 0 01-1.26-.47C8.1 13.1 6.9 11.5 6.8 11.37c-.1-.13-.83-1.1-.83-2.1 0-1 .52-1.49.71-1.7.19-.21.41-.26.55-.26.14 0 .27 0 .39.01.13.01.3-.05.47.36.18.42.6 1.46.65 1.57.06.11.1.23.02.37-.07.14-.11.23-.22.35-.11.12-.23.27-.33.36-.11.1-.23.21-.1.41.13.2.59.97 1.26 1.57.87.77 1.6 1.01 1.82 1.12.22.11.35.09.48-.05.13-.14.55-.64.7-.86.15-.22.29-.18.5-.11.21.07 1.35.64 1.58.75.23.11.39.17.44.26.06.1.06.57-.12 1.07z" fill="white"/></svg>
@@ -578,7 +607,7 @@ function orderNow(productName,btn){
   if(!sel.value){sel.style.borderColor='#D4621A';sel.focus();setTimeout(function(){sel.style.borderColor='';},2200);return;}
   var fragLabel=sel.options[sel.selectedIndex].text;
   var msg=encodeURIComponent('Namaste! I would like to order:\n\nProduct: '+productName+'\nFragrance: '+fragLabel+'\n\nPlease confirm availability and delivery. Dhanyavaad!');
-  window.open('https://wa.me/916375507029?text='+msg,'_blank');
+  window.open('https://wa.me/919876543210?text='+msg,'_blank');
 }
 function submitForm(){
   var name=document.getElementById('fname').value.trim();
