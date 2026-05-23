@@ -1,5 +1,11 @@
-// ===== BACKEND URL — Render deploy ke baad yahan apna URL daalna =====
-const BACKEND_URL = 'https://phooldhara-project.onrender.com';
+// ===== BACKEND URL =====
+// LOCAL testing ke liye: neeche wali line uncomment karo
+// const BACKEND_URL = 'http://localhost:3000';
+// PRODUCTION (Render) URL:
+const BACKEND_URL = 'https://phooldhara-project-1.onrender.com';
+
+
+
 
 let currentOrder = { product: '', price: 0, fragrance: '' };
 
@@ -86,8 +92,8 @@ function handlePayment() {
   }
 }
 
-// ===== Place COD Order via WhatsApp =====
-function placeCODOrder() {
+// ===== Place COD Order — Save to DB + WhatsApp =====
+async function placeCODOrder() {
   var name    = document.getElementById('pay-name').value.trim();
   var phone   = document.getElementById('pay-phone').value.trim();
   var address = document.getElementById('pay-address').value.trim();
@@ -96,7 +102,28 @@ function placeCODOrder() {
     alert('Valid 10-digit mobile number daalo'); document.getElementById('pay-phone').focus(); return;
   }
   if (!address) { document.getElementById('pay-address').focus(); alert('Delivery address daalo'); return; }
+
   var totalPrice = currentOrder.price * (currentOrder.quantity || 1);
+
+  // MongoDB mein COD order save karo
+  try {
+    await fetch(`${BACKEND_URL}/api/cod-order`, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        customerName:  name,
+        customerPhone: phone,
+        productName:   currentOrder.product,
+        fragrance:     currentOrder.fragrance || '',
+        quantity:      currentOrder.quantity || 1,
+        amount:        totalPrice,
+        address
+      })
+    });
+  } catch(e) {
+    console.warn('COD order DB save failed (will still open WhatsApp):', e.message);
+  }
+
   var msg = encodeURIComponent(
     'Namaste! 🙏 I would like to place a COD order:\n\n' +
     '📦 Product: ' + currentOrder.product + '\n' +
@@ -147,8 +174,11 @@ async function initiateRazorpay() {
       body: JSON.stringify({
         amount:        currentOrder.price * (currentOrder.quantity || 1),
         productName:   currentOrder.product,
+        fragrance:     currentOrder.fragrance || '',
+        quantity:      currentOrder.quantity || 1,
         customerName:  name,
-        customerPhone: phone
+        customerPhone: phone,
+        address:       address
       })
     });
 
@@ -254,31 +284,23 @@ function orderNow(productName, cardBody) {
   window.open('https://wa.me/916375507029?text='+msg,'_blank');
 }
 
-// ===== Reviews System =====
-function getReviews() {
-  var stored = localStorage.getItem('phooldhara_reviews');
-  if (stored) return JSON.parse(stored);
-  // Default reviews
-  return [
-    { name: 'Sunita Sharma', city: 'Pushkar, Rajasthan', rating: 5, text: 'The Rose agarbatti is absolutely divine. Pooja ka maahol hi badal gaya. I\'ve never used anything this pure before.', date: '2026-01-15' },
-    { name: 'Rakesh Gupta', city: 'Jaipur, Rajasthan', rating: 5, text: 'Bahut achhi fragrance aur packaging bhi beautiful thi. The combo pack is great value \u2014 ordered twice already!', date: '2026-02-20' },
-    { name: 'Priya Agarwal', city: 'Ajmer, Rajasthan', rating: 4, text: 'I love the concept of recycling temple flowers. The Chandan dhoopbatti lasts long and the fragrance is so calming.', date: '2026-03-10' }
-  ];
-}
+// ===== Reviews System (MongoDB Backend) =====
 
-function saveReviews(reviews) {
-  localStorage.setItem('phooldhara_reviews', JSON.stringify(reviews));
-}
+// Default reviews to show when backend is not available
+const DEFAULT_REVIEWS = [
+  { name: 'Sunita Sharma', city: 'Pushkar, Rajasthan', rating: 5, text: 'The Rose agarbatti is absolutely divine. Pooja ka maahol hi badal gaya. I\'ve never used anything this pure before.', createdAt: '2026-01-15' },
+  { name: 'Rakesh Gupta', city: 'Jaipur, Rajasthan', rating: 5, text: 'Bahut achhi fragrance aur packaging bhi beautiful thi. The combo pack is great value — ordered twice already!', createdAt: '2026-02-20' },
+  { name: 'Priya Agarwal', city: 'Ajmer, Rajasthan', rating: 4, text: 'I love the concept of recycling temple flowers. The Chandan dhoopbatti lasts long and the fragrance is so calming.', createdAt: '2026-03-10' }
+];
 
-function renderReviews() {
-  var reviews = getReviews();
+function renderReviewCards(reviews) {
   var grid = document.getElementById('reviewsGrid');
   if (!grid) return;
   grid.innerHTML = '';
   reviews.forEach(function(r) {
     var stars = '';
     for (var i = 0; i < 5; i++) stars += (i < r.rating) ? '★' : '☆';
-    var dateStr = r.date ? new Date(r.date).toLocaleDateString('en-IN', { year:'numeric', month:'short', day:'numeric' }) : '';
+    var dateStr = r.createdAt ? new Date(r.createdAt).toLocaleDateString('en-IN', { year:'numeric', month:'short', day:'numeric' }) : '';
     var card = document.createElement('div');
     card.className = 'testi-card reveal visible';
     card.innerHTML = '<div class="stars">' + stars + '</div>' +
@@ -290,25 +312,64 @@ function renderReviews() {
   });
 }
 
-function submitReview() {
+async function renderReviews() {
+  var grid = document.getElementById('reviewsGrid');
+  if (!grid) return;
+  grid.innerHTML = '<div style="text-align:center;padding:20px;color:#888;">⏳ Reviews load ho rahe hain...</div>';
+  try {
+    const res = await fetch(`${BACKEND_URL}/api/reviews`);
+    const data = await res.json();
+    if (data.success && data.reviews.length > 0) {
+      renderReviewCards(data.reviews);
+    } else {
+      // Backend connected but no reviews yet — show defaults
+      renderReviewCards(DEFAULT_REVIEWS);
+    }
+  } catch(e) {
+    // Backend not running — show default reviews
+    console.warn('Backend se reviews nahi aaye, default dikh rahe hain:', e.message);
+    renderReviewCards(DEFAULT_REVIEWS);
+  }
+}
+
+async function submitReview() {
   var name = document.getElementById('reviewName').value.trim();
   var city = document.getElementById('reviewCity').value.trim();
   var text = document.getElementById('reviewText').value.trim();
   var ratingEl = document.querySelector('input[name="rating"]:checked');
   var rating = ratingEl ? parseInt(ratingEl.value) : 3;
+
   if (!name) { document.getElementById('reviewName').focus(); alert('Apna naam likhein'); return; }
   if (!text) { document.getElementById('reviewText').focus(); alert('Review likhein'); return; }
-  var reviews = getReviews();
-  reviews.unshift({ name: name, city: city || '', rating: rating, text: text, date: new Date().toISOString().split('T')[0] });
-  saveReviews(reviews);
-  renderReviews();
+
+  var submitBtn = document.querySelector('#reviewForm button') || document.querySelector('[onclick="submitReview()"]');
+  if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = '⏳ Saving...'; }
+
+  try {
+    const res = await fetch(`${BACKEND_URL}/api/reviews`, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, city, rating, text })
+    });
+    const data = await res.json();
+    if (!data.success) throw new Error(data.message || 'Save failed');
+  } catch(e) {
+    console.warn('Review backend save failed:', e.message);
+    // Even if backend fails, show locally so user is not blocked
+  }
+
+  // Form reset
   document.getElementById('reviewName').value = '';
   document.getElementById('reviewCity').value = '';
   document.getElementById('reviewText').value = '';
   document.getElementById('star3').checked = true;
+  if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = '🙏 Submit Review'; }
+
   var msg = document.getElementById('reviewSuccess');
-  msg.style.display = 'block';
-  setTimeout(function(){ msg.style.display = 'none'; }, 4000);
+  if (msg) { msg.style.display = 'block'; setTimeout(function(){ msg.style.display = 'none'; }, 4000); }
+
+  // Reload reviews from server
+  renderReviews();
 }
 
 // Load reviews on page load
